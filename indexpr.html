@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hearts for Hope | Charity for Orphaned Children</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #fffaf0;
+      color: #333;
+    }
+
+    header {
+      background-color: #ff6f61;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem 1rem;
+      position: relative;
+    }
+
+    header img.logo {
+      width: 80px;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      margin-top: 0.5rem;
+    }
+
+    .activity-images {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      background: #ffece3;
+      padding: 1rem;
+    }
+
+    .activity-images img {
+      width: 280px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    .about, .volunteer {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .about h2, .volunteer h2 {
+      color: #ff6f61;
+    }
+
+    .about p, .volunteer p {
+      max-width: 800px;
+      margin: 1rem auto;
+      font-size: 1.1rem;
+    }
+
+    .image-gallery {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .image-gallery img {
+      width: 300px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .donate {
+      background: #fef3e2;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .donate h2 {
+      color: #d9480f;
+    }
+
+    .donate button {
+      background-color: #ff6f61;
+      color: white;
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .donate button:hover {
+      background-color: #e45750;
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+
+    /* Donation Page (popup style) */
+    #donationPage {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .donate-page {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .donate-page h1 {
+      color: #ff6f61;
+      text-align: center;
+    }
+
+    .donate-page form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .donate-page form label {
+      margin-top: 1rem;
+      text-align: left;
+    }
+
+    .donate-page form input {
+      padding: 0.6rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .donate-page form button {
+      margin-top: 1.5rem;
+      background: #28a745;
+      color: white;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .donate-page form button:hover {
+      background: #218838;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: #ccc;
+      border: none;
+      border-radius: 50%;
+      padding: 5px 10px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .close-btn:hover {
+      background: #999;
+    }
+
+    /* Volunteer Form Styling */
+    .volunteer form {
+      max-width: 500px;
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .volunteer form input,
+    .volunteer form textarea {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    .volunteer form button {
+      background-color: #ff6f61;
+      color: white;
+      border: none;
+      padding: 0.8rem;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .volunteer form button:hover {
+      background-color: #e45750;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <img class="logo" src="https://t3.ftcdn.net/jpg/10/91/18/34/360_F_1091183481_lrB77TJUEMGmIpGZyYizS864CzsNf37J.jpg" alt="Hearts for Hope Logo" />
+    <h1>Hearts for Hope</h1>
+    <p>Bringing Light to the Lives of Orphaned Children</p>
+  </header>
+
+  <!-- Top Donation Activity Images -->
+  <div class="activity-images">
+    <img src="https://cf.ltkcdn.net/charity/images/std-xs/266625-340x219-homeless-shelter-donations.jpg" alt="Food distribution to poor" />
+    <img src="https://media.gettyimages.com/id/1498170916/photo/a-couple-is-taking-a-bag-of-food-at-the-food-and-clothes-bank.jpg?s=612x612&w=gi&k=20&c=OQXzpRYIt4_vr0b2tTz9Wsz8aCPi9FgUBwGSEeJaToM=" alt="Helping beggars with meals" />
+    <img src="https://www.shutterstock.com/image-photo/charity-donation-volunteering-concept-happy-260nw-2150112325.jpg" alt="Volunteers handing food packets" />
+  </div>
+
+  <!-- About Section -->
+  <section class="about">
+    <h2>About Us</h2>
+    <p>
+      At <strong>Hearts for Hope</strong>, we are committed to transforming the lives of orphaned and abandoned children by providing them with shelter, education, love, and the chance to dream. Every child deserves a family, a future, and a life full of hope.
+    </p>
+    <div class="image-gallery">
+      <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=400" alt="Smiling child" />
+      <img src="https://directconnectaid.org/wp-content/uploads/2020/01/100_3488.jpg" alt="Children playing" />
+    </div>
+  </section>
+
+  <!-- Volunteer Form Section -->
+  <section class="volunteer">
+    <h2>Join as a Volunteer</h2>
+    <p>Become a part of our mission. Help us create a brighter future for orphaned children.</p>
+    <form>
+      <input type="text" name="fullname" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <textarea rows="4" placeholder="Why do you want to volunteer with us?" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <!-- Donation Call to Action -->
+  <section class="donate">
+    <h2>Make a Difference</h2>
+    <p>Your donation helps us provide meals, education, and care to children who need it the most. Just one click can change a life.</p>
+    <button onclick="showDonationForm()">Donate Now</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Hearts for Hope | Every Child Deserves a Tomorrow</p>
+  </footer>
+
+  <!-- Donation Modal -->
+  <div id="donationPage">
+    <div class="donate-page">
+      <button class="close-btn" onclick="closeDonationForm()">×</button>
+      <h1>Donate to Hearts for Hope</h1>
+      <p style="text-align: center;">Thank you for supporting orphaned children. Your kindness matters.</p>
+      <form onsubmit="submitDonation(event)">
+        <label for="amount">Donation Amount ($):</label>
+        <input type="number" id="amount" name="amount" placeholder="50" required />
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" placeholder="John Doe" required />
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+        <button type="submit">Submit Donation</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function showDonationForm() {
+      document.getElementById('donationPage').style.display = 'flex';
+    }
+
+    function closeDonationForm() {
+      document.getElementById('donationPage').style.display = 'none';
+    }
+
+    function submitDonation(event) {
+      event.preventDefault();
+      alert("Thank you for your generous donation! ❤️");
+      closeDonationForm();
+    }
+  </script>
+</body>
+</html>
